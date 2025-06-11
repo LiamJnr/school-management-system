@@ -1,0 +1,91 @@
+.header{
+    position: sticky;
+    top: 0;
+    left: 0;
+    grid-area: header;
+    background: var(--body-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo__menu{
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    background: rgb(255, 156, 156);
+}
+
+#nav__toggler{
+    display: none;
+}
+
+.close__svg{
+    display: none;
+}
+
+.menu__svg{
+    display: block;
+}
+
+.user__notifications{
+    display: flex;
+    column-gap: 32px;
+    background: rgb(147, 147, 209);
+}
+
+.notifications__container{
+    background: greenyellow;
+}
+
+.notifications_icon,
+.user__icon,
+.notifications_total{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notifications_icon{
+    position: relative;
+}
+
+.notifications_icon svg{
+    block-size: 32px;
+    inline-size: 32px;
+}
+
+.notifications_total{
+    position: absolute;
+    top: -35%;
+    left: 25%;
+    block-size: auto;
+    inline-size: auto;
+    background: gainsboro;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.notifications_total p{
+    box-sizing: content-box;
+    padding: 2px;
+    background: red;
+    block-size: 20px;
+    inline-size: 20px;
+    border-radius: 100vw;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user__icon{
+    background: orange;
+}
+
+.user__icon p{
+    font-size: 0.8rem;
+    font-weight: 500;
+}

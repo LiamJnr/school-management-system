@@ -1,0 +1,11 @@
+@import './card.css';
+
+.cards__section{
+    margin-top: 3rem;
+    margin-inline: 42px;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
+    gap: 12px;
+}
