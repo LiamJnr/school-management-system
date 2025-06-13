@@ -31,6 +31,25 @@ body{
     "navbar main"
     ;
     overflow: hidden;
+    transition: grid-template-columns 0.2s ease-in-out;
+}
+
+body.collapse{
+    grid-template-columns: 80px 1fr;
+}
+
+body.collapse .dropdown__toggler{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.collapse .dropdown__toggler span{
+    display: none;
+}
+
+body.collapse .dropdown__toggler .dropdown__label{
+    display: none;
 }
 
 header{
@@ -102,5 +121,38 @@ svg{
 
     #nav__close{
         display: block;
+    }
+
+    #collapser{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 741px) and (max-width: 1020px){
+
+    body{
+        grid-template-columns: 80px 1fr;
+        /* grid-template-areas: 
+        "header header"
+        "navbar main"
+        ; */
+    }
+
+    .dropdown__toggler{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dropdown__toggler span{
+        display: none;
+    }
+
+    .dropdown__toggler .dropdown__label{
+        display: none;
+    }
+
+    #collapser{
+        display: none;
     }
 }

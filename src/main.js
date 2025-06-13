@@ -45,6 +45,10 @@ togglers.forEach(toggler => {
                 ? dropIcon.style.setProperty('transform', 'rotate(180deg)')
                 : dropIcon.style.setProperty('transform', 'rotate(0deg)');
         }
+
+        if(body.classList.contains('collapse')){
+            body.classList.toggle('collapse');
+        }
     });
 });
 
@@ -55,3 +59,19 @@ document.addEventListener('click', function (e) {
     }
 });
 
+const navCollapser = document.getElementById('collapser');
+const body = document.querySelector('body');
+
+navCollapser.addEventListener('click', () =>{
+    body.classList.toggle('collapse');
+})
+
+window.addEventListener('resize', () => {
+    
+    const body = document.body;
+    const width = window.innerWidth
+
+    if(width <= 1020 && body.classList.contains('collapse')){
+        body.classList.remove('collapse');
+    }
+})
