@@ -1,36 +1,25 @@
-const navToggler = document.getElementById('nav__toggler');
-const navBar = document.getElementById('nav');
-const container = document.querySelector('.container');
-const menuIcon = document.querySelector('.menu__svg');
-const closeIcon = document.querySelector('.close__svg');
+const navOpen = document.getElementById('nav__open');
+const navClose = document.getElementById('nav__close');
+const navBar = document.querySelector('nav');
 
-navToggler.addEventListener('click', () => {
-    navBar.classList.toggle('show');
-    
-    if(navBar.classList.contains('show')){
-        menuIcon.style.setProperty('display', 'none');
-        closeIcon.style.setProperty('display', 'block');
-        return;
-    }
+function toggleNav(){
+    navBar.classList.toggle('translate');
+}
 
-    if(!navBar.classList.contains('show')){
-        closeIcon.style.setProperty('display', 'none');    
-        menuIcon.style.setProperty('display', 'block');
-        return;
-    }
-});
+navOpen?.addEventListener('click', toggleNav);
+navClose?.addEventListener('click', toggleNav);
 
-const togglers = Array.from(document.querySelectorAll('.toggler'));
-const dropdownContainers = document.querySelectorAll('.dropdown_container');
+const togglers = Array.from(document.querySelectorAll('button.dropdown__toggler'));
+const linkContainers = document.querySelectorAll('.link__container');
 const dropdownLists = document.querySelectorAll('.dropdown_list');
 
 // Close all dropdowns reusable function (trgt for target)
 function closeAllDropdowns(trgt = null) {
-    dropdownContainers.forEach(container => {
-        const dropdown = container.nextElementSibling;
-        const icon = container.querySelector('.drop_icon');
+    linkContainers.forEach(container => {
+        const dropdown = container.querySelector('.dropdown');
+        const icon = container.querySelector('.drop__icon');
 
-        if (dropdown !== trgt && dropdown.classList.contains('open')) {
+        if (dropdown && dropdown !== trgt && dropdown.classList.contains('open')) {
             dropdown.classList.remove('open');
             if (icon) icon.style.setProperty('transform', 'rotate(0deg)');
         }
@@ -41,8 +30,8 @@ function closeAllDropdowns(trgt = null) {
 togglers.forEach(toggler => {
     toggler.addEventListener('click', function (e) {
         e.stopPropagation(); // Prevent document click
-        const targetDropdown = this.parentElement.nextElementSibling;
-        const dropIcon = this.querySelector('.drop_icon');
+        const targetDropdown = this.nextElementSibling;
+        const dropIcon = this.querySelector('.drop__icon');
 
         // Close others
         closeAllDropdowns(targetDropdown);
@@ -51,15 +40,17 @@ togglers.forEach(toggler => {
         targetDropdown.classList.toggle('open');
 
         // Rotate Icon
-        targetDropdown.classList.contains('open') 
-            ? dropIcon.style.setProperty('transform', 'rotate(180deg)')
-            : dropIcon.style.setProperty('transform', 'rotate(0deg)');
+        if(dropIcon){
+            targetDropdown.classList.contains('open') 
+                ? dropIcon.style.setProperty('transform', 'rotate(180deg)')
+                : dropIcon.style.setProperty('transform', 'rotate(0deg)');
+        }
     });
 });
 
 // Global click to close dropdowns if click happens outside dropdown Container
 document.addEventListener('click', function (e) {
-    if (!e.target.closest('.dropdown_container')) {
+    if (!e.target.closest('.link__container')) {
         closeAllDropdowns();
     }
 });

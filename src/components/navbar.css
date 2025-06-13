@@ -1,83 +1,77 @@
-.navbar{
+nav{
     grid-area: navbar;
-    position: sticky;
-    background: rgb(182, 182, 182);
-    block-size: calc(100vh - 64px);
-    top: 64px;
+    background: rgb(185, 185, 185);
     align-self: start;
+    block-size: calc(100vh - 64px);
     overflow-y: auto;
-    font-weight: 600;
+    display: flex;
+    flex-direction: column;
 }
 
-.navbar svg{
-    block-size: 26px;
-    inline-size: 26px;
+.nav__resize__container{
+    background: rgb(167, 167, 255);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
-.navbar::-webkit-scrollbar {
-    width: 8px; /* Slightly thinner for sidebar */
+#nav__open{
+    display: none;
 }
 
-.navbar::-webkit-scrollbar-track {
-    background: #e0e0e0;
-}
-
-.navbar::-webkit-scrollbar-thumb {
-    background: #666;
-}
-
-.navbar::-webkit-scrollbar-thumb:hover {
-    background: #444;
+#nav__close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
 
 .link__list__container{
+    list-style: none;
+}
+
+.link__container{
+    background: rgb(149, 149, 255);
+    list-style: none;
     display: flex;
     flex-direction: column;
-    list-style: none;
-    margin-top: 3rem;
 }
 
-.link_icon{
-    fill: gainsboro;
-}
-
-.link__container a{
-    /* background: rgb(134, 255, 134); */
+.dropdown__toggler{
+    background: greenyellow;
+    inline-size: 100%;
+    font: inherit;
     display: flex;
     align-items: center;
-    justify-content: start;
-    column-gap: 0.8rem;
-    text-decoration: none;
-    color: black;
-    padding-inline-start: 42px;
-    block-size: 2.5rem;
-}
-
-.link__container a:hover{
-    background: rgb(80, 168, 80);
-}
-
-.toggler{
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    inline-size: 70%;
-    font-family: inherit;
-    font-size: 1rem;
+    gap: 8px;
     border: none;
-    cursor: pointer;
     block-size: 100%;
-    background: none;
+    cursor: pointer;
+    block-size: 2rem;
 }
 
-.menu_parent{
+.dropdown__toggler:hover{
+    background: rgb(91, 138, 22);
+}
+
+.dropdown__toggler svg{
+    background: blue;
+    block-size: 24px;
+    inline-size: 24px;
+}
+
+.dropdown__label{
+    background: red;
+    display: flex;
+    align-items: center;
+    inline-size: 260px;
+}
+
+.label__name{
     flex-grow: 1;
     display: flex;
-}
-
-.drop_icon{
-    block-size: 22px;
-    inline-size: 22px;
+    align-items: center;
+    justify-items: flex-start;
 }
 
 .dropdown{
@@ -91,11 +85,21 @@
 }
 
 .dropdown_content{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
     overflow: hidden;
 }
 
 .dropdown_content a{
-    padding-block: 0.5rem;
-    background: wheat;
-    padding-inline-start: 102px;
+    block-size: 2rem;
+    display: flex;
+    align-items: center;
+    background: grey;
+    padding-inline-start: 78px;
+}
+
+.drop__icon{
+    transform: rotate(0deg);
+    transition: transform 0.3s ease-in;
 }

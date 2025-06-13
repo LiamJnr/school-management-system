@@ -17,29 +17,27 @@
 html{
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
+    block-size: 100%;
+    overflow: hidden;
 }
 
 body{
-    block-size: 100vh;
-    /* overflow: hidden; */
-}
-
-body::-webkit-scrollbar {
-  width: 0; /* For vertical scrollbar */
-  height: 0; /* For horizontal scrollbar */
-  display: none; /* In some cases, display: none might be more reliable */
-}
-
-.container{
-    min-block-size: 100vh;
     display: grid;
+    block-size: 100%;
     grid-template-columns: 320px 1fr;
     grid-template-rows: 64px 1fr;
     grid-template-areas: 
     "header header"
     "navbar main"
     ;
-    transition: grid-template-columns 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    grid-area: header;
+    background: gainsboro;
 }
 
 button{
@@ -64,61 +62,45 @@ svg{
     overflow-y: auto;
 }
 
-/* Tablet View */
-@media screen and (min-width: 421px) and (max-width: 794px) {
+@media screen and (max-width:740px) {
     
-    .container{
-        grid-template-columns: 80px 1fr;
-    }
-
-    .link__container a{
-        padding: 0;
-        margin: 0;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .link__container a span{
-        display: none;
-    }
-
-    .toggler{
-        display: none;
-    }
-}
-
-/* Mobile View */
-@media screen and (max-width: 480px) {
-    
-    .container{
-        min-block-size: 100vh;
+    body{
         display: grid;
-        grid-template-columns:1fr;
+        block-size: 100%;
+        grid-template-columns: 1fr;
         grid-template-rows: 64px 1fr;
         grid-template-areas: 
         "header"
         "main"
         ;
+        overflow: hidden;
     }
 
-    .navbar{
-        inline-size: 320px;
+    nav{
         position: fixed;
+        top: 0;
         left: 0;
+        transform: translateX(0);
+        grid-area: navbar;
+        background: rgb(185, 185, 185);
+        align-self: start;
+        block-size: 100vh;
+        inline-size: 320px;
+        /* max-inline-size: 320px; */
+        overflow-y: auto;
         transform: translateX(-100%);
-        transition: transform 0.3s ease-in-out;
+        transition: transform 0.2s ease-in-out;
     }
 
-    .navbar.show{
-        inline-size: 320px;
+    nav.translate{
         transform: translateX(0);
     }
 
-    #nav__toggler{
+    #nav__open{
         display: block;
     }
 
-    .logo__menu h3{
-        display: none;
+    #nav__close{
+        display: block;
     }
 }
