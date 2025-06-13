@@ -96,8 +96,12 @@ nav{
     block-size: 2rem;
     display: flex;
     align-items: center;
-    background: grey;
+    /* background: grey; */
     padding-inline-start: 78px;
+}
+
+.dropdown_content a:hover{
+    background: rgb(91, 138, 22);
 }
 
 .drop__icon{

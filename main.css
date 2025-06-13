@@ -132,10 +132,6 @@ svg{
 
     body{
         grid-template-columns: 80px 1fr;
-        /* grid-template-areas: 
-        "header header"
-        "navbar main"
-        ; */
     }
 
     .dropdown__toggler{
@@ -154,5 +150,53 @@ svg{
 
     #collapser{
         display: none;
+    }
+
+    nav{
+        overflow: visible;
+    }
+
+    .link__container{
+        position: relative;
+        overflow: visible;
+    }
+
+    .dropdown{
+        position: absolute;
+        top: 0;
+        left: calc(100% + 1rem);
+        inline-size: 240px;
+        background: gainsboro;
+        /* border-radius: 0px 8px 8px 8px; */
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    .dropdown_content a{
+        padding: 0;
+        inline-size: 100%;
+        padding-inline-start: 2rem;
+        padding-block: 1.3rem;
+    }
+
+    .dropdown.open{
+        grid-template-rows: 1fr;
+        overflow: visible;
+    }
+
+    .dropdown.open::after{
+        position: absolute;
+        content: '';
+        background: red;
+        background: gainsboro;
+        block-size: 16px;
+        inline-size: 10px;
+        top: 10px;
+        left: -10px;
+        clip-path: polygon(100% 0, 0 50%, 100% 100%);
+    }
+
+    .dropdown.open:has(a:hover){
+        overflow: hidden;
     }
 }
